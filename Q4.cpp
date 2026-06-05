@@ -1,51 +1,49 @@
-/*
-Build a lexical analyzer implementing the following regular expressions:
-Integer variable = (i-nI-N)(a-zA-Z0-9)*
-ShortInt Number = (1-9)|(1-9)(0-9)|(1-9)(0-9)(0-9)|(1-9)(0-9)(0-9)(0-9)
-LongInt Number = (1-9)(0-9)(0-9)(0-9)(0-9)+
-Invalid Input or Undefined = Otherwise
-*/
 #include <bits/stdc++.h>
 using namespace std;
 int main()
 {
-    freopen("04.input.txt", "r", stdin);
-    string word;
-
-    while (getline(cin, word))
+    freopen("input4.txt", "r", stdin);
+    string input;
+    while (getline(cin, input))
     {
         bool isValid = true;
-        if (tolower(word[0]) >= 'i' && tolower(word[0]) <= 'n')
+
+        if (tolower(input[0]) >= 'i' && tolower(input[0]) <= 'n')
         {
-            for (int i = 1; i < word.size(); i++)
+            for (int i = 1; i < input.size(); i++)
             {
-                if (!isalnum(word[i]))
+                if (!isalnum(input[i]))
                 {
                     isValid = false;
                     break;
                 }
             }
-            if(isValid) cout << word << " : "<< "Integer variable\n";
+            if (isValid)
+                cout << input << ": " << "Integer" << endl;
         }
 
-        else if(word[0] <= '9' && word[0] >= '1') {
-            for(int i = 1; i < word.size(); i++) {
-                if(!isdigit(word[i])) {
+        else if (input[0] >= '1' && input[0] <= '9')
+        {
+            for (int i = 1; i < input.size(); i++)
+            {
+                if (!isdigit(input[i]))
+                {
                     isValid = false;
                     break;
                 }
             }
-            if(isValid) {
-                if(word.size() < 5) cout<<word<<" : "<<"ShortInt Number\n";
-                else cout<<word<<" : "<<"LongInt Number\n";
+            if (isValid)
+            {
+                if (input.size() < 5)
+                    cout << input << ": " << "ShortInt" << endl;
+                else
+                    cout << input << ": " << "LongInt" << endl;
             }
         }
         else {
-            isValid = false;
+           cout<<input<<": "<<"Invalid"<<endl;
         }
-        if(!isValid) {
-            cout << word << " : "<< "Invalid Input or Undefined\n";
-        }
+       
     }
-    return 0;
+    
 }

@@ -1,44 +1,72 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool is_vowel(char c) {
-    if(c == 'a' or c == 'e' or c == 'i' or c == 'o' or c == 'u' or c == 'A' or c == 'E' or c == 'I' or c == 'O' or c == 'U') {
-        return true;
-    }
-    return false;
+bool is_vowel(char c)
+{
+    return tolower(c) == 'a' || tolower(c) == 'e' || tolower(c) == 'i' || tolower(c) == 'o' || tolower(c) == 'u';
 }
 
-int main() {
-
-    string s = "Munmun is the student of Computer Science & Engineering";
-
-    int len = s.size();
-    int no_of_vowel = 0, no_of_consonants = 0;
-    set < char > vowels, consonants;
-    for(int i = 0; i < len; i++) {
-        if(is_vowel(s[i])) {
-            no_of_vowel += 1;
-            vowels.insert(s[i]);
-        } else if((s[i] >= 'a' and s[i] <= 'z') or (s[i] >= 'A' and s[i] <= 'Z')) {
-            no_of_consonants += 1;
-            consonants.insert(s[i]);
+int main()
+{
+    string input;
+    getline(cin, input);
+    int vowel = 0, consonant = 0;
+    vector<char> vowels, consonants;
+    string word = "";
+    string vowel_word = "", consonant_word = "";
+    for (char c : input)
+    {
+        if (isalpha(c))
+        {
+            if (is_vowel(c))
+            {
+                vowel++;
+                vowels.push_back(c);
+            }
+            else
+            {
+                consonant++;
+                consonants.push_back(c);
+            }
+            word += c;
+        }
+        else
+        {
+            if (word != "")
+            {
+                if (is_vowel(word[0]))
+                    vowel_word += word + " ";
+                else
+                    consonant_word += word + " ";
+                word = "";
+            }
         }
     }
+    if (word != "")
+    {
+        if (is_vowel(word[0]))
+            vowel_word += word + " ";
+        else
+            consonant_word += word + " ";
+    }
+    cout << "No. of vowels: " << vowel << endl;
+    cout << "No. of consonants: " << consonant << endl;
 
-    cout << "No. of Vowels: " << no_of_vowel << endl;
-    cout << "No. of Consonants: " << no_of_consonants << endl;
+    cout << endl;
+    cout << "Vowels: ";
+    for (char c : vowels)
+    {
+        cout << c << " ";
+    }
+    cout << endl;
 
-    cout << "Existed vowels are: ";
-    for(auto i : vowels) {
-        cout << i << " ";
-    } cout << endl;
+    cout << "consonants: ";
+    for (char c : consonants)
+    {
+        cout << c << " ";
+    }
+    cout << endl;
 
-    cout << "Existed consonants are: ";
-    for(auto i : consonants) {
-        cout << i << " ";
-    } cout << endl;
-
-
-    return 0;
-
+    cout << "Vowel string: " << vowel_word << endl;
+    cout << " Consonant string: " << consonant_word << endl;
 }
