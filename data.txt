@@ -1,0 +1,18 @@
+DEPT CSE Computer Science & Engineering
+DEPT ICE Information & Communication Engineering
+
+YEAR 1 1st
+YEAR 2 2nd
+YEAR 3 3rd
+YEAR 4 4th
+
+SEM 1 1st Semester
+SEM 2 2nd Semester
+
+SUB 1 Software Engineering
+SUB 2 Database Management Systems
+SUB 3 Web Engineering
+SUB 4 Compiler Design
+
+COURSE 1 Theory
+COURSE 2 Lab
